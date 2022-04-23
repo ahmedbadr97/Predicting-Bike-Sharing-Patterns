@@ -4,3 +4,4 @@ IPython
 torch
 pandas
 matplotlib
+sklearn

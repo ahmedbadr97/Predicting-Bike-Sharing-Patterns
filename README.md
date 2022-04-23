@@ -1,6 +1,7 @@
 # Predicting Bike Sharing Patterns
 - Prediction of bike rental count hourly or daily based on the environmental and seasonal settings using neural networks via Pytorch.
 - type of the problem: __Regression problem__
+- inputs are ()
 
 
 ## Background
@@ -13,6 +14,7 @@ Opposed to other transport services such as bus or subway, the duration of trave
 
 Hence, it is expected that most of important events in the city could be detected via monitoring these data.
 
+___
 
 
 ## Dataset
