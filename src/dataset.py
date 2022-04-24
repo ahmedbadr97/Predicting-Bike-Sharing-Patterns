@@ -20,6 +20,12 @@ def load_col_idx_map(path):
 
 
 def data_preprocessing(raw_data_df):
+    """
+    drop pointless features
+    do hot_encoding to categorical fields
+    :param raw_data_df: raw data dataframe
+    :return: preprocessed data dataframe
+    """
     fields_to_drop = ['yr', 'casual', 'registered', 'atemp', 'dteday', 'instant']
     preprocessed_data_df = raw_data_df.drop(fields_to_drop, axis=1)
 
@@ -36,3 +42,33 @@ def data_preprocessing(raw_data_df):
 
     return preprocessed_data_df
 
+
+class BikeSharingPatterns(Dataset):
+    def __init__(self, csv_path, col_idx_dict, target_label):
+        """
+        BikeSharingPatterns custom pytorch dataset splits data into numpy features and target
+        :param csv_path: dataset csv file
+        :param col_idx_dict: dictionary with keys col_names and values the index of the column in the expected input
+         to the model
+        :param target_label: the name of the target label in the given csv_file
+        """
+        # load data
+        df = pd.read_csv(csv_path)
+        labels_df = df[target_label]
+        df.drop(target_label, axis=1, inplace=True)
+        self.np_data = np.zeros_like(df)
+        self.no_rows = df.shape[0]
+
+        self.np_labels = labels_df.to_numpy(dtype=float)
+
+        # convert data to numpy with column idx same like col_idx_dict
+
+        for col_name, col_idx in col_idx_dict.items():
+            for row_idx in range(self.no_rows):
+                self.np_data[row_idx][col_idx] = df[col_name][row_idx]
+
+    def __getitem__(self, idx):
+        return self.np_data[idx], self.np_labels[idx]
+
+    def __len__(self):
+        return self.no_rows

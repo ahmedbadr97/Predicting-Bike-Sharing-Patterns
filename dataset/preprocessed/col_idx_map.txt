@@ -56,4 +56,3 @@ holiday_0,54
 holiday_1,55
 workingday_0,56
 workingday_1,57
-cnt,58
