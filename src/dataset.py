@@ -1,7 +1,7 @@
 from torch.utils.data.dataset import Dataset
 import pandas as pd
 import numpy as np
-
+import torch
 
 def load_col_idx_map(path):
     """
@@ -68,7 +68,7 @@ class BikeSharingPatterns(Dataset):
                 self.np_data[row_idx][col_idx] = df[col_name][row_idx]
 
     def __getitem__(self, idx):
-        return self.np_data[idx], self.np_labels[idx]
+        return torch.tensor(self.np_data[idx], dtype=torch.float), self.np_labels[idx]
 
     def __len__(self):
         return self.no_rows

@@ -15,9 +15,12 @@ class BikeSharingModel(nn.Module):
     def forward(self, x):
         x = self.fc1(x)
         x = F.relu(x)
+        x = self.dropout(x)
 
         x = self.fc2(x)
         x = F.relu(x)
+        x = self.dropout(x)
 
         x = self.fc3(x)
+        x = F.relu(x)
         return x
