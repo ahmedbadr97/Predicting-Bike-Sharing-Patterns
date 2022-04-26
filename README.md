@@ -16,7 +16,26 @@ Hence, it is expected that most of important events in the city could be detecte
 
 ___
 
-
+## requirements 
+- all dependencies exists in [requirements.txt](/requirements.txt) use `pip install -r requirements.txt` to install all requirements
+## contents
+- jupyter file contents [bike-Sharing-patterns](notebooks/bike-Sharing-patterns.ipynb)
+  - Load and view Raw Data
+    - Dataset characteristics
+    - correlation with target
+  - Data visualization
+  - Data preprocessing
+    - Feature engineering and one hot encoding
+    - Save preprocessed data
+  - Model Training
+    - Train and test loaders
+    - Model architecture selection
+    - Final model training
+    - Save final weights without overfitting
+  - Inferences
+- all data preprocessing and data loading in [dataset module](src/dataset.py)
+- all train and testing in [model_trainning module](src/model_training.py.py)
+- model architecture in [model module](src/model.py)
 ## Dataset
 
 Bike-sharing rental process is highly correlated to the environmental and seasonal settings. For instance, weather conditions, precipitation, day of week, season, hour of the day, etc. can affect the rental behaviors.
