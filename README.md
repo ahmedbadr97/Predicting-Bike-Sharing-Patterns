@@ -1,7 +1,7 @@
 # Predicting Bike Sharing Patterns
 - Prediction of bike rental count hourly or daily based on the environmental and seasonal settings using neural networks via Pytorch.
 - type of the problem: __Regression problem__
-- inputs are ()
+- inputs are (season,month,hour,holiday or not, weather, temp) output number of bikes will be rented
 
 
 ## Background
@@ -59,3 +59,9 @@ The core data set is related to the two-year historical log corresponding to yea
 ___
 
 ## Model architecture
+- the best architecture that fit with the data among alot of tested architectures
+  - 4 fully-connected layers
+    - ![model_architecture.png](model_architecture.png)
+    - input and output layers with relu activation function and the two mid-layers with sigmoid activation function
+## Model inference
+<p align="center"><img src="mode_predictions.png" height="300"  alt="mode_predictions.png"/></p>>
